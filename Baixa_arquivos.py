@@ -4,23 +4,22 @@ import os
 from os.path import isfile, join, basename
 import shutil
 
-#path = "//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente"
-#dir = os.listdir(path)
-path = "C:/Users/mscanavachi/.PyCharmCE2019.3/config/scratches/Dados Transparência"
+path = "//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparencia"
 dir = os.listdir(path)
-path_old = "//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparência_old"
+path_old = "//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparencia_old"
 dir_old = os.listdir(path_old)
 path_base = "//unity/corp/planilha/Base_Contratos"
 dir_base = os.listdir(path_base)
 ext = 'txt'
 
-#try:
-for file in dir:
-    if os.path.exists(file):
-        os.remove(file)
-#except:
-#    pass
-'''
+try:
+    for file_old in dir_old:
+        path_file = '{}/{}'.format(path_old, file_old)
+        if os.path.exists(path_file):
+            os.remove(path_file)
+except:
+    pass
+
 try:
     for item in [join(path, f) for f in os.listdir(path) if isfile(join(path, f)) and f.endswith(ext)]:
         shutil.copy(item, join(path_old, basename(item)))
@@ -30,7 +29,9 @@ except:
 
 try:
     for file in dir:
-        os.remove(file)
+        path_file = '{}/{}'.format(path, file)
+        if os.path.exists(path_file):
+            os.remove(path_file)
 except:
     pass
 
@@ -54,19 +55,21 @@ pprint(links)
 
 for url in links:
     try:
-        nome_do_arquivo = wget.download(url, out="//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente")
+        nome_do_arquivo = wget.download(url, out="//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparencia")
     except:
         pass
+
 try:
-    for file_base in path_base:
-        os.remove(file_base)
+    for file_base in dir_base:
+        path_file = '{}/{}'.format(path_base, file_base)
+        if os.path.exists(path_file):
+            os.remove(path_file)
 except:
     pass
 
 try:
-    for item_base in [join(path, f) for f in os.listdir(path) if isfile(join(path, f)) and f.endswith(ext)]:
-        shutil.copy(item_base, join(path_base, basename(item_base)))
-        print('copiado "{}" -> "{}"'.format(item_base, join(path_old, basename(item_base))))
+    for item in [join(path, f) for f in os.listdir(path) if isfile(join(path, f)) and f.endswith(ext)]:
+        shutil.copy(item, join(path_base, basename(item)))
+        print('copiado "{}" -> "{}"'.format(item, join(path_old, basename(item))))
 except:
     pass
-'''
