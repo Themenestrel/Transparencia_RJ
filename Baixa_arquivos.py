@@ -55,7 +55,7 @@ pprint(links)
 
 for url in links:
     try:
-        nome_do_arquivo = wget.download(url, out="//unity/corp2/SCE/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparencia")
+        nome_do_arquivo = wget.download(url, out="//unity/corp2/sce/! NGI/Power BI Paineis/Bases Comuns/Rio Transparente/Rio_Transparencia")
     except:
         pass
 
